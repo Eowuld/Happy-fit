@@ -62,4 +62,30 @@ public class UserDao {
         requete.execute();
     }
     
+     public static List<User> getAllUsers() throws SQLException {
+        List<User> result = new ArrayList<>();
+        
+        String sql = "SELECT * FROM user";
+        Connection connexion = AccessBD.getConnection();
+        
+        Statement requette = connexion.createStatement();
+        
+        ResultSet rs = requette.executeQuery(sql);
+        
+        while (rs.next()){
+            User u = new User();
+            u.setId(rs.getInt("iduser"));
+            u.setPseudo(rs.getString("pseudo"));            
+            u.setMdp(rs.getString("mdp"));                      
+            u.setMail(rs.getString("mail"));            
+            u.setSexe(rs.getString("sexe"));            
+            u.setAge(rs.getInt("age"));            
+            u.setTaille(rs.getInt("taille"));            
+            u.setPoids(rs.getDouble("poids"));                     
+            
+            result.add(u);
+        }
+        
+        return result;
+     }
 }

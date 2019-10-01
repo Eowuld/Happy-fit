@@ -8,6 +8,7 @@ package fr.solutec.ihm;
 import fr.solutec.dao.UserDao;
 import static fr.solutec.ihm.Profil.emailValidate;
 import fr.solutec.model.User;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -277,7 +278,7 @@ public class Inscription extends javax.swing.JFrame {
 
     private void exitInscription1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitInscription1ActionPerformed
         
-        try {
+       
             
         String pseudo = txtPseudo.getText();
         String mail = txtMail.getText();
@@ -287,33 +288,41 @@ public class Inscription extends javax.swing.JFrame {
         int age = Integer.parseInt(txtAge.getText());
         int taille = Integer.parseInt(txtTaille.getText());
         double poids = Double.parseDouble(txtPoids.getText());
-        
+        try {
         User v = new User(pseudo, mail, mdp, sexe, age, taille, poids); 
-            
+        List<User> membres = UserDao.getAllUsers();
+         
+            for (User membre : membres) {
+                if (membre.getPseudo().equals(pseudo)){
+                    JOptionPane.showMessageDialog(rootPane, "Ce pseudo existe déjà !");
+                }
+                else {
+                    if (membre.getMail().equals(mail)){
+                        JOptionPane.showMessageDialog(rootPane, "Ce mail existe déjà !");
+                    }
+                    else {
+                         if (mdp.equals(mdpConfirm) && emailValidate(mail)){            
+                            UserDao.insert(v);           
+                            JOptionPane.showMessageDialog(rootPane, "Vous êtes bien inscrit !");
+                            }
         
-        if (mdp.equals(mdpConfirm) && emailValidate(mail)){            
-            UserDao.insert(v);           
-            JOptionPane.showMessageDialog(rootPane, "Vous êtes bien inscrit !");
-           }
+                         else if (!mdp.equals(mdpConfirm)){
+                         JOptionPane.showMessageDialog(rootPane, "Vos deux mots de passe sont différents !");
+                         }
         
-        else if (!mdp.equals(mdpConfirm)){
-            JOptionPane.showMessageDialog(rootPane, "Vos deux mots de passe sont différents !");
-        }
-        
-        else if (!emailValidate(mail)){
-             JOptionPane.showMessageDialog(rootPane, "Votre e-mail n'est pas valide !");
-        }
+                         else if (!emailValidate(mail)){
+                         JOptionPane.showMessageDialog(rootPane, "Votre e-mail n'est pas valide !");
+                         }
                
-        }
+                    }
+                } 
+            }
+         }
         
         catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, "except : " + e.getMessage());
-                }
-        
+            JOptionPane.showMessageDialog(rootPane, "except : " + e.getMessage());
+            }                   
     
-            
-        
-        
         
     }//GEN-LAST:event_exitInscription1ActionPerformed
 
