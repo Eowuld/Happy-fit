@@ -5,7 +5,9 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.dao.UserDao;
 import fr.solutec.model.User;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,7 +22,7 @@ public class Inscription extends javax.swing.JFrame {
     public Inscription(User u) {
         this.u = u;
         initComponents();
-        this.getRootPane().setDefaultButton(exitInscription);
+        this.getRootPane().setDefaultButton(btRetour);
     }
 
     /**
@@ -48,12 +50,13 @@ public class Inscription extends javax.swing.JFrame {
         txtPoids = new javax.swing.JTextField();
         lbPoids = new javax.swing.JLabel();
         lbAge = new javax.swing.JLabel();
-        exitInscription = new javax.swing.JButton();
+        btRetour = new javax.swing.JButton();
         lbMdp = new javax.swing.JLabel();
         txtPseudo = new javax.swing.JTextField();
         cbSexe = new javax.swing.JComboBox<>();
         txtMdp = new javax.swing.JPasswordField();
         txtMdpConfirm = new javax.swing.JPasswordField();
+        exitInscription1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 250));
@@ -109,8 +112,12 @@ public class Inscription extends javax.swing.JFrame {
         lbAge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAge.setText("Age");
 
-        exitInscription.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        exitInscription.setText("VALIDER");
+        btRetour.setText("RETOUR");
+        btRetour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRetourActionPerformed(evt);
+            }
+        });
 
         lbMdp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMdp.setText("Mot de passe");
@@ -126,14 +133,18 @@ public class Inscription extends javax.swing.JFrame {
             }
         });
 
-        txtMdp.setText("jPasswordField1");
         txtMdp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMdpActionPerformed(evt);
             }
         });
 
-        txtMdpConfirm.setText("jPasswordField1");
+        exitInscription1.setText("VALIDER");
+        exitInscription1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitInscription1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,7 +162,6 @@ public class Inscription extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(exitInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTaille, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,11 +182,17 @@ public class Inscription extends javax.swing.JFrame {
                         .addComponent(txtPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(122, 122, 122))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtMdpConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMdpConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(123, 123, 123))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(exitInscription1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,9 +237,11 @@ public class Inscription extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPoids, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbKg))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addComponent(exitInscription, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitInscription1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -248,6 +266,63 @@ public class Inscription extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMdpActionPerformed
 
+    private void btRetourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRetourActionPerformed
+        
+        Login fnLogin = new Login(u);
+        fnLogin.setVisible(true);
+        this.setVisible(false);   
+        
+    }//GEN-LAST:event_btRetourActionPerformed
+
+    private void exitInscription1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitInscription1ActionPerformed
+        
+        try {
+            
+        String pseudo = txtPseudo.getText();
+        String mail = txtMail.getText();
+        String mdp = txtMdp.getText();
+        String mdpConfirm = txtMdpConfirm.getText();
+        String sexe = (String)cbSexe.getSelectedItem( );
+        int age = Integer.parseInt(txtAge.getText());
+        int taille = Integer.parseInt(txtTaille.getText());
+        double poids = Double.parseDouble(txtPoids.getText());
+        
+        User v = new User(pseudo, mail, mdp, sexe, age, taille, poids); 
+            
+        
+        if (mdp.equals(mdpConfirm) && emailValidate(mail) = true ){            
+            UserDao.insert(v);           
+            JOptionPane.showMessageDialog(rootPane, "Vous êtes bien inscrit !");
+           }
+        
+        else if (!mdp.equals(mdpConfirm)){
+            JOptionPane.showMessageDialog(rootPane, "Vos deux mots de passe sont différents !");
+        }
+        
+        else if (emailValidate(mail) = false){
+             JOptionPane.showMessageDialog(rootPane, "Votre e-mail n'est pas valide !");
+        }
+               
+        }
+        
+        catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "except : " + e.getMessage());
+                }
+        
+    
+            
+        
+        
+        
+    }//GEN-LAST:event_exitInscription1ActionPerformed
+
+  // emailValidate (mail)  
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -284,8 +359,9 @@ public class Inscription extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btRetour;
     private javax.swing.JComboBox<String> cbSexe;
-    private javax.swing.JButton exitInscription;
+    private javax.swing.JButton exitInscription1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbAge;
     private javax.swing.JLabel lbID;
