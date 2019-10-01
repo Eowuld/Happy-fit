@@ -11,4 +11,13 @@ package fr.solutec.model;
  */
 public class User {
     
+    private int id;
+    private String pseudo;
+    private String mail;
+    private String sexe;
+    private int age;
+    private int taille;
+    private double poids;
+
+    
 }
