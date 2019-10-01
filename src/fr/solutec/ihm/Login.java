@@ -62,6 +62,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         btInscription.setText("S'inscrire");
+        btInscription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInscriptionActionPerformed(evt);
+            }
+        });
 
         lbID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbID.setText("Pseudo");
@@ -136,14 +141,14 @@ public class Login extends javax.swing.JFrame {
         User u = UserDao.getByLoginPass(pseudo, mdp);
             
           if (u != null){
-           JOptionPane.showMessageDialog(rootPane,"Connect OK" );
+           JOptionPane.showMessageDialog(rootPane,"Connection réussie !" );
            Home fnHome = new Home(u);
            fnHome.setVisible(true);
            this.setVisible(false);
           }
           
            else {
-           JOptionPane.showMessageDialog(rootPane,"Connect NOK" );
+           JOptionPane.showMessageDialog(rootPane,"Identifiant ou Mdp incorrect !" );
        }
         
         } catch (Exception e) {
@@ -156,6 +161,12 @@ public class Login extends javax.swing.JFrame {
             
                                         
     }//GEN-LAST:event_btConnectActionPerformed
+
+    private void btInscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInscriptionActionPerformed
+           Inscription fnInscription = new Inscription(u);
+           fnInscription.setVisible(true);
+           this.setVisible(false);
+    }//GEN-LAST:event_btInscriptionActionPerformed
 
     /**
      * @param args the command line arguments
