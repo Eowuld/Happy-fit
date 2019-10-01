@@ -8,6 +8,8 @@ package fr.solutec.ihm;
 import fr.solutec.model.User;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import fr.solutec.dao.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,7 +61,7 @@ public class Profil extends javax.swing.JFrame {
         lblCm = new javax.swing.JLabel();
         lbKg = new javax.swing.JLabel();
         lbPseudo = new javax.swing.JLabel();
-        cbSexe = new javax.swing.JComboBox<>();
+        scrollSexe = new javax.swing.JComboBox<>();
         txtMdp = new javax.swing.JPasswordField();
         txtMdpConfirm = new javax.swing.JPasswordField();
 
@@ -137,7 +139,7 @@ public class Profil extends javax.swing.JFrame {
 
         lbPseudo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        cbSexe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homme", "Femme", "Autre" }));
+        scrollSexe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homme", "Femme", "Autre" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -178,7 +180,7 @@ public class Profil extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(cbSexe, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrollSexe, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(66, 66, 66))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(txtMdpConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,7 +210,7 @@ public class Profil extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbSexe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addComponent(lbAge)
                 .addGap(4, 4, 4)
@@ -247,6 +249,7 @@ public class Profil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitProfilActionPerformed
+        String newPseudo = u.getPseudo();
         String newMail = txtMail.getText();
         if (!emailValidate(newMail)){
             newMail = u.getMail();
@@ -256,22 +259,32 @@ public class Profil extends javax.swing.JFrame {
         if (!(newPassword==newPasswordConfirm)){
             newPassword = u.getMdp();
         }
+        String newSexe = (String)scrollSexe.getSelectedItem();
+        int newAge = 0;
         try{
-            int newAge = Integer.parseInt(txtAge.getText());
+            newAge = Integer.parseInt(txtAge.getText());
         } catch (Exception e) {
-            int newAge = u.getAge();
+            newAge = u.getAge();
         }
+        int newTaille = 0;
         try{
-            int newTaille = Integer.parseInt(txtTaille.getText());
+            newTaille = Integer.parseInt(txtTaille.getText());
         } catch (Exception e){
-            int newTaille = u.getTaille();
+            newTaille = u.getTaille();
         }
+        double newPoids = 0; 
         try{
-            double newPoids = Double.parseDouble(txtPoids.getText()); 
+            newPoids = Double.parseDouble(txtPoids.getText()); 
         } catch (Exception e) {
-            double newTaille = u.getTaille();
+            newPoids = u.getPoids();
         }
-
+        User v = new User(newPseudo, newMail, newPassword, newSexe, newAge, newTaille, newPoids);
+        try{
+            UserDao.update(u,v);
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+        
         Home fnHome = new Home(u);
         fnHome.setVisible(true);
         this.setVisible(false);
@@ -317,7 +330,6 @@ public class Profil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbSexe;
     private javax.swing.JButton exitProfil;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -334,6 +346,7 @@ public class Profil extends javax.swing.JFrame {
     private javax.swing.JLabel lblAns;
     private javax.swing.JLabel lblCm;
     private javax.swing.JLabel lblTitre;
+    private javax.swing.JComboBox<String> scrollSexe;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtMail;
     private javax.swing.JPasswordField txtMdp;

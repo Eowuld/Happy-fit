@@ -284,7 +284,7 @@ public class Inscription extends javax.swing.JFrame {
         String mail = txtMail.getText();
         String mdp = txtMdp.getText();
         String mdpConfirm = txtMdpConfirm.getText();
-        String sexe = (String)cbSexe.getSelectedItem( );
+        String sexe = (String)cbSexe.getSelectedItem();
         int age = Integer.parseInt(txtAge.getText());
         int taille = Integer.parseInt(txtTaille.getText());
         double poids = Double.parseDouble(txtPoids.getText());
