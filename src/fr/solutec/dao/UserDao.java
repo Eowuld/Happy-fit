@@ -35,6 +35,7 @@ public class UserDao {
             resultat = new User();
             resultat.setId(rs.getInt("iduser"));
             resultat.setPseudo(rs.getString("pseudo"));            
+            resultat.setMdp(rs.getString("mdp"));                      
             resultat.setMail(rs.getString("mail"));            
             resultat.setSexe(rs.getString("sexe"));            
             resultat.setAge(rs.getInt("age"));            
@@ -42,6 +43,23 @@ public class UserDao {
             resultat.setPoids(rs.getDouble("poids"));            
         }               
         return resultat;
+    }
+    
+     public static void insert(User personne) throws SQLException {
+        String sql = "INSERT INTO user (pseudo, mdp, mail, sexe, age, taille, poids) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        
+        Connection connexion = AccessBD.getConnection();
+        
+        PreparedStatement requete = connexion.prepareStatement(sql);
+        requete.setString(1, personne.getPseudo());
+        requete.setString(2, personne.getMdp());
+        requete.setString(3, personne.getMail());
+        requete.setString(4, personne.getSexe());
+        requete.setInt(5, personne.getAge());
+        requete.setInt(6, personne.getTaille());
+        requete.setDouble(7, personne.getPoids());
+        
+        requete.execute();
     }
     
 }
