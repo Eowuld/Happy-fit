@@ -7,7 +7,7 @@ package fr.solutec.dao;
 
 /**
  *
- * @author Joel B
+ * @author Joel Banka
  */
 public class UserDao {
     
