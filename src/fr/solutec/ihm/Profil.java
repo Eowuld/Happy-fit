@@ -27,19 +27,197 @@ public class Profil extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblTitre = new javax.swing.JLabel();
+        lbID = new javax.swing.JLabel();
+        txtMail = new javax.swing.JTextField();
+        lbMail = new javax.swing.JLabel();
+        txtMdp = new javax.swing.JTextField();
+        txtMdpConf = new javax.swing.JTextField();
+        lbMdp = new javax.swing.JLabel();
+        txtSexe = new javax.swing.JTextField();
+        lbMdpConf = new javax.swing.JLabel();
+        txtAge = new javax.swing.JTextField();
+        lbSexe = new javax.swing.JLabel();
+        txtTaille = new javax.swing.JTextField();
+        lbTaille = new javax.swing.JLabel();
+        txtPoids = new javax.swing.JTextField();
+        lbPoids = new javax.swing.JLabel();
+        lbAge = new javax.swing.JLabel();
+        exitProfil = new javax.swing.JButton();
+        lblAns = new javax.swing.JLabel();
+        lblCm = new javax.swing.JLabel();
+        lbKg = new javax.swing.JLabel();
+        lbPseudo = new javax.swing.JLabel();
+
+        jLabel2.setText("jLabel2");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 250));
         setResizable(false);
+
+        lblTitre.setFont(new java.awt.Font("Lucida Calligraphy", 0, 24)); // NOI18N
+        lblTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitre.setText("Mon Profil");
+
+        lbID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbID.setText("Pseudo");
+
+        txtMail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMail.setAlignmentX(0.0F);
+        txtMail.setAlignmentY(0.0F);
+
+        lbMail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMail.setText("E-mail");
+
+        txtMdp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMdp.setAlignmentX(0.0F);
+        txtMdp.setAlignmentY(0.0F);
+
+        txtMdpConf.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMdpConf.setAlignmentX(0.0F);
+        txtMdpConf.setAlignmentY(0.0F);
+
+        lbMdp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMdp.setText("Mot de passe");
+
+        txtSexe.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtSexe.setAlignmentX(0.0F);
+        txtSexe.setAlignmentY(0.0F);
+
+        lbMdpConf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbMdpConf.setText("Confirmer Mot de passe");
+
+        txtAge.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtAge.setAlignmentX(0.0F);
+        txtAge.setAlignmentY(0.0F);
+
+        lbSexe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbSexe.setText("Sexe");
+
+        txtTaille.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTaille.setAlignmentX(0.0F);
+        txtTaille.setAlignmentY(0.0F);
+
+        lbTaille.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbTaille.setText("Taille");
+
+        txtPoids.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPoids.setAlignmentX(0.0F);
+        txtPoids.setAlignmentY(0.0F);
+
+        lbPoids.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPoids.setText("Poids");
+
+        lbAge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbAge.setText("Age");
+
+        exitProfil.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        exitProfil.setText("VALIDER");
+
+        lblAns.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAns.setText("ans");
+
+        lblCm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCm.setText("cm");
+
+        lbKg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbKg.setText("kg");
+
+        lbPseudo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblTitre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbMail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbMdp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbMdpConf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbSexe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbTaille, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbPoids, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbAge, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(74, 74, 74)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(exitProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMdpConf, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSexe, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTaille, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPoids, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAns, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                    .addComponent(lblCm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbKg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(lbPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitre)
+                .addGap(35, 35, 35)
+                .addComponent(lbID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbMail)
+                .addGap(4, 4, 4)
+                .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbMdp)
+                .addGap(4, 4, 4)
+                .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbMdpConf)
+                .addGap(4, 4, 4)
+                .addComponent(txtMdpConf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbSexe)
+                .addGap(4, 4, 4)
+                .addComponent(txtSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbAge)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAns))
+                .addGap(18, 18, 18)
+                .addComponent(lbTaille)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTaille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCm))
+                .addGap(18, 18, 18)
+                .addComponent(lbPoids)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPoids, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbKg))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(exitProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -81,5 +259,28 @@ public class Profil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton exitProfil;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbAge;
+    private javax.swing.JLabel lbID;
+    private javax.swing.JLabel lbKg;
+    private javax.swing.JLabel lbMail;
+    private javax.swing.JLabel lbMdp;
+    private javax.swing.JLabel lbMdpConf;
+    private javax.swing.JLabel lbPoids;
+    private javax.swing.JLabel lbPseudo;
+    private javax.swing.JLabel lbSexe;
+    private javax.swing.JLabel lbTaille;
+    private javax.swing.JLabel lblAns;
+    private javax.swing.JLabel lblCm;
+    private javax.swing.JLabel lblTitre;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtMail;
+    private javax.swing.JTextField txtMdp;
+    private javax.swing.JTextField txtMdpConf;
+    private javax.swing.JTextField txtPoids;
+    private javax.swing.JTextField txtSexe;
+    private javax.swing.JTextField txtTaille;
     // End of variables declaration//GEN-END:variables
 }
