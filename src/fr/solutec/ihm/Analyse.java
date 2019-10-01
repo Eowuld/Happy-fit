@@ -5,6 +5,8 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.model.User;
+
 /**
  *
  * @author stagiaire
@@ -14,8 +16,11 @@ public class Analyse extends javax.swing.JFrame {
     /**
      * Creates new form Analyse
      */
-    public Analyse() {
+    private static User u;
+    public Analyse(User u) {
+        this.u = u;
         initComponents();
+        this.getRootPane().setDefaultButton(exitAnalyse);
     }
 
     /**
@@ -68,7 +73,7 @@ public class Analyse extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitAnalyseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitAnalyseActionPerformed
-        Home fnHome = new Home();
+        Home fnHome = new Home(u);
         fnHome.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_exitAnalyseActionPerformed
@@ -103,7 +108,7 @@ public class Analyse extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Analyse().setVisible(true);
+                new Analyse(u).setVisible(true);
             }
         });
     }

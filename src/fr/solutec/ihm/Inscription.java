@@ -5,6 +5,8 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.model.User;
+
 /**
  *
  * @author stagiaire
@@ -14,7 +16,9 @@ public class Inscription extends javax.swing.JFrame {
     /**
      * Creates new form Inscription
      */
-    public Inscription() {
+    private static User u;
+    public Inscription(User u) {
+        this.u = u;
         initComponents();
         this.getRootPane().setDefaultButton(exitInscription);
     }
@@ -274,7 +278,7 @@ public class Inscription extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inscription().setVisible(true);
+                new Inscription(u).setVisible(true);
             }
         });
     }

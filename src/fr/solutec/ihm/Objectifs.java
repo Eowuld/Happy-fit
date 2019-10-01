@@ -5,6 +5,8 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.model.User;
+
 /**
  *
  * @author stagiaire
@@ -14,8 +16,11 @@ public class Objectifs extends javax.swing.JFrame {
     /**
      * Creates new form Objectifs
      */
-    public Objectifs() {
+    private static User u;
+    public Objectifs(User u) {
         initComponents();
+        this.u = u;
+        this.getRootPane().setDefaultButton(exitObjectifs);
     }
 
     /**
@@ -45,7 +50,6 @@ public class Objectifs extends javax.swing.JFrame {
         lblTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitre.setText("Objectifs");
 
-        exitObjectifs.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         exitObjectifs.setText("VALIDER");
 
         cbObj.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "kg", "min", "km" }));
@@ -158,7 +162,7 @@ public class Objectifs extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Objectifs().setVisible(true);
+                new Objectifs(u).setVisible(true);
             }
         });
     }

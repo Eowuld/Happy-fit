@@ -5,6 +5,8 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.model.User;
+
 /**
  *
  * @author stagiaire
@@ -14,7 +16,9 @@ public class Aide extends javax.swing.JFrame {
     /**
      * Creates new form Aide
      */
-    public Aide() {
+    private static User u;
+    public Aide(User u) {
+        this.u = u;
         initComponents();
     }
 
@@ -89,7 +93,7 @@ public class Aide extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitAideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitAideActionPerformed
-        Home fnHome = new Home();
+        Home fnHome = new Home(u);
         fnHome.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_exitAideActionPerformed
@@ -123,7 +127,7 @@ public class Aide extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new Aide().setVisible(true);
+            new Aide(u).setVisible(true);
         });
     }
 

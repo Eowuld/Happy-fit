@@ -15,6 +15,8 @@ public class User {
     
     private int id;
     private String pseudo;
+    private String mdp;
+    private String mdpConfirm;    
     private String mail;
     private String sexe;
     private int age;
@@ -24,14 +26,34 @@ public class User {
     public User() {
     }
 
-    public User(String pseudo, String mail, String sexe, int age, int taille, double poids) {
+    public User(String pseudo, String mail,String mdp ,String mdpConfirm, String sexe, int age, int taille, double poids) {
         this.pseudo = pseudo;
         this.mail = mail;
         this.sexe = sexe;
         this.age = age;
         this.taille = taille;
         this.poids = poids;
+        this.mdp = mdp;
+        this.mdpConfirm = mdpConfirm;
     }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public String getMdpConfirm() {
+        return mdpConfirm;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
+    }
+
+    public void setMdpConfirm(String mdpConfirm) {
+        this.mdpConfirm = mdpConfirm;
+    }
+    
+    
 
     public int getId() {
         return id;

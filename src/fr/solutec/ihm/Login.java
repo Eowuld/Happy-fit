@@ -5,6 +5,10 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.dao.UserDao;
+import fr.solutec.model.User;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author stagiaire
@@ -14,8 +18,11 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public Login() {
+    private static User u;
+    public Login(User u) {
         initComponents();
+        this.u = u;
+        this.getRootPane().setDefaultButton(btConnect);
     }
 
     /**
@@ -48,6 +55,11 @@ public class Login extends javax.swing.JFrame {
         txtPseudo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         btConnect.setText("Se connecter");
+        btConnect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConnectActionPerformed(evt);
+            }
+        });
 
         btInscription.setText("S'inscrire");
 
@@ -116,6 +128,35 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConnectActionPerformed
+        try {
+            
+        String pseudo = txtPseudo.getText();
+        String mdp = txtMdp.getText();
+        User u = UserDao.getByLoginPass(pseudo, mdp);
+            
+          if (u != null){
+           JOptionPane.showMessageDialog(rootPane,"Connect OK" );
+           Home fnHome = new Home(u);
+           fnHome.setVisible(true);
+           this.setVisible(false);
+          }
+          
+           else {
+           JOptionPane.showMessageDialog(rootPane,"Connect NOK" );
+       }
+        
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(rootPane, "except : " + e.getMessage());
+        }
+       
+        
+        
+        
+            
+                                        
+    }//GEN-LAST:event_btConnectActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -146,7 +187,7 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Login(u).setVisible(true);
             }
         });
     }

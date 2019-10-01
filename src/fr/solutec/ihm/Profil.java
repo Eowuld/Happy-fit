@@ -5,6 +5,8 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.model.User;
+
 /**
  *
  * @author stagiaire
@@ -14,8 +16,11 @@ public class Profil extends javax.swing.JFrame {
     /**
      * Creates new form Profil
      */
-    public Profil() {
+    private static User u;
+    public Profil(User u) {
+        this.u = u;
         initComponents();
+        this.getRootPane().setDefaultButton(exitProfil);
     }
 
     /**
@@ -254,7 +259,7 @@ public class Profil extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Profil().setVisible(true);
+                new Profil(u).setVisible(true);
             }
         });
     }
