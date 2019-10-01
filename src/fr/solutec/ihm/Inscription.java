@@ -41,18 +41,17 @@ public class Inscription extends javax.swing.JFrame {
         lbTaille = new javax.swing.JLabel();
         lbMail = new javax.swing.JLabel();
         txtPoids = new javax.swing.JTextField();
-        txtMdp = new javax.swing.JTextField();
         lbPoids = new javax.swing.JLabel();
         lbAge = new javax.swing.JLabel();
-        txtMdpConf = new javax.swing.JTextField();
         exitProfil = new javax.swing.JButton();
         lbMdp = new javax.swing.JLabel();
         txtPseudo = new javax.swing.JTextField();
         cbSexe = new javax.swing.JComboBox<>();
+        txtMdp = new javax.swing.JPasswordField();
+        txtMdpConfirm = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 250));
-        setPreferredSize(new java.awt.Dimension(360, 640));
         setResizable(false);
 
         lbMdpConf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -99,19 +98,11 @@ public class Inscription extends javax.swing.JFrame {
         txtPoids.setAlignmentX(0.0F);
         txtPoids.setAlignmentY(0.0F);
 
-        txtMdp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtMdp.setAlignmentX(0.0F);
-        txtMdp.setAlignmentY(0.0F);
-
         lbPoids.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbPoids.setText("Poids");
 
         lbAge.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbAge.setText("Age");
-
-        txtMdpConf.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtMdpConf.setAlignmentX(0.0F);
-        txtMdpConf.setAlignmentY(0.0F);
 
         exitProfil.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         exitProfil.setText("VALIDER");
@@ -124,6 +115,20 @@ public class Inscription extends javax.swing.JFrame {
         txtPseudo.setAlignmentY(0.0F);
 
         cbSexe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homme", "Femme", "Autre" }));
+        cbSexe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSexeActionPerformed(evt);
+            }
+        });
+
+        txtMdp.setText("jPasswordField1");
+        txtMdp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMdpActionPerformed(evt);
+            }
+        });
+
+        txtMdpConfirm.setText("jPasswordField1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -143,8 +148,6 @@ public class Inscription extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(exitProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMdpConf, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTaille, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPoids, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -153,14 +156,22 @@ public class Inscription extends javax.swing.JFrame {
                     .addComponent(lblAns, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                     .addComponent(lblCm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbKg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(cbSexe, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(122, 122, 122))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtMdpConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(123, 123, 123))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,13 +188,13 @@ public class Inscription extends javax.swing.JFrame {
                 .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbMdp)
-                .addGap(4, 4, 4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addComponent(lbMdpConf)
-                .addGap(4, 4, 4)
-                .addComponent(txtMdpConf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMdpConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
                 .addComponent(lbSexe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,6 +234,14 @@ public class Inscription extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbSexeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSexeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSexeActionPerformed
+
+    private void txtMdpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMdpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMdpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,8 +296,8 @@ public class Inscription extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitre;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtMail;
-    private javax.swing.JTextField txtMdp;
-    private javax.swing.JTextField txtMdpConf;
+    private javax.swing.JPasswordField txtMdp;
+    private javax.swing.JPasswordField txtMdpConfirm;
     private javax.swing.JTextField txtPoids;
     private javax.swing.JTextField txtPseudo;
     private javax.swing.JTextField txtTaille;
