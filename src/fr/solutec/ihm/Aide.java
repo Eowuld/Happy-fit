@@ -55,6 +55,11 @@ public class Aide extends javax.swing.JFrame {
         );
 
         exitAide.setText("J'ai compris !");
+        exitAide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitAideActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,6 +87,12 @@ public class Aide extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exitAideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitAideActionPerformed
+        Home fnHome = new Home();
+        fnHome.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_exitAideActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,10 +122,8 @@ public class Aide extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Aide().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Aide().setVisible(true);
         });
     }
 
