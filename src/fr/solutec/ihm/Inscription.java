@@ -6,6 +6,7 @@
 package fr.solutec.ihm;
 
 import fr.solutec.dao.UserDao;
+import static fr.solutec.ihm.Profil.emailValidate;
 import fr.solutec.model.User;
 import javax.swing.JOptionPane;
 
@@ -290,7 +291,7 @@ public class Inscription extends javax.swing.JFrame {
         User v = new User(pseudo, mail, mdp, sexe, age, taille, poids); 
             
         
-        if (mdp.equals(mdpConfirm) && emailValidate(mail) = true ){            
+        if (mdp.equals(mdpConfirm) && emailValidate(mail)){            
             UserDao.insert(v);           
             JOptionPane.showMessageDialog(rootPane, "Vous êtes bien inscrit !");
            }
@@ -299,7 +300,7 @@ public class Inscription extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Vos deux mots de passe sont différents !");
         }
         
-        else if (emailValidate(mail) = false){
+        else if (!emailValidate(mail)){
              JOptionPane.showMessageDialog(rootPane, "Votre e-mail n'est pas valide !");
         }
                
