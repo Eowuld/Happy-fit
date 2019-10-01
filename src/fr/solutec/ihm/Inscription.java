@@ -28,7 +28,6 @@ public class Inscription extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtSexe = new javax.swing.JTextField();
         lbMdpConf = new javax.swing.JLabel();
         lblAns = new javax.swing.JLabel();
         lblTitre = new javax.swing.JLabel();
@@ -49,15 +48,12 @@ public class Inscription extends javax.swing.JFrame {
         exitProfil = new javax.swing.JButton();
         lbMdp = new javax.swing.JLabel();
         txtPseudo = new javax.swing.JTextField();
+        cbSexe = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 250));
         setPreferredSize(new java.awt.Dimension(360, 640));
         setResizable(false);
-
-        txtSexe.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtSexe.setAlignmentX(0.0F);
-        txtSexe.setAlignmentY(0.0F);
 
         lbMdpConf.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMdpConf.setText("Confirmer Mot de passe");
@@ -127,6 +123,8 @@ public class Inscription extends javax.swing.JFrame {
         txtPseudo.setAlignmentX(0.0F);
         txtPseudo.setAlignmentY(0.0F);
 
+        cbSexe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homme", "Femme", "Autre" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -147,7 +145,6 @@ public class Inscription extends javax.swing.JFrame {
                     .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMdpConf, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSexe, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTaille, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPoids, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -160,6 +157,10 @@ public class Inscription extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(cbSexe, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,9 +185,9 @@ public class Inscription extends javax.swing.JFrame {
                 .addComponent(txtMdpConf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbSexe)
-                .addGap(4, 4, 4)
-                .addComponent(txtSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
                 .addComponent(lbAge)
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -259,6 +260,7 @@ public class Inscription extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cbSexe;
     private javax.swing.JButton exitProfil;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbAge;
@@ -279,7 +281,6 @@ public class Inscription extends javax.swing.JFrame {
     private javax.swing.JTextField txtMdpConf;
     private javax.swing.JTextField txtPoids;
     private javax.swing.JTextField txtPseudo;
-    private javax.swing.JTextField txtSexe;
     private javax.swing.JTextField txtTaille;
     // End of variables declaration//GEN-END:variables
 }

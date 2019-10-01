@@ -33,7 +33,6 @@ public class Aide extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 250));
-        setPreferredSize(new java.awt.Dimension(360, 640));
         setResizable(false);
 
         jLabel2.setText("ceci est le texte d'aide");

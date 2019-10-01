@@ -65,7 +65,6 @@
                       <Component id="txtMail" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
                       <Component id="txtMdp" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
                       <Component id="txtMdpConf" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
-                      <Component id="txtSexe" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
                       <Component id="txtAge" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
                       <Component id="txtTaille" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
                       <Component id="txtPoids" alignment="1" min="-2" pref="220" max="-2" attributes="0"/>
@@ -81,6 +80,11 @@
                   <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
                   <Component id="lbPseudo" min="-2" pref="218" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="cbSexe" min="-2" pref="219" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -107,9 +111,9 @@
                   <Component id="txtMdpConf" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lbSexe" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                  <Component id="txtSexe" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cbSexe" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Component id="lbAge" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -184,13 +188,6 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Mot de passe"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtSexe">
-          <Properties>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="alignmentX" type="float" value="0.0"/>
-            <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lbMdpConf">
@@ -274,6 +271,20 @@
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cbSexe">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="3">
+                <StringItem index="0" value="Homme"/>
+                <StringItem index="1" value="Femme"/>
+                <StringItem index="2" value="Autre"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
