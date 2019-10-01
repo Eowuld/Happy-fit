@@ -84,7 +84,9 @@ public class Historique extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitHistoriqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitHistoriqueActionPerformed
-        // TODO add your handling code here:
+        Home fnHome = new Home();
+        fnHome.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_exitHistoriqueActionPerformed
 
     /**

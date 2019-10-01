@@ -32,9 +32,14 @@ public class Analyse extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("bonjour je suis l'analyse");
 
         exitAnalyse.setText("Retour");
+        exitAnalyse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitAnalyseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -43,7 +48,7 @@ public class Analyse extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(134, 134, 134)
                 .addComponent(jLabel1)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(exitAnalyse)
@@ -61,6 +66,12 @@ public class Analyse extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exitAnalyseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitAnalyseActionPerformed
+        Home fnHome = new Home();
+        fnHome.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_exitAnalyseActionPerformed
 
     /**
      * @param args the command line arguments
