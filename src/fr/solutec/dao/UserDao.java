@@ -62,4 +62,19 @@ public class UserDao {
         requete.execute();
     }
     
+     public static void update(User to_update, User newer) throws SQLException {
+        String sql = "UPDATE user SET mdp=?, mail=?, sexe=?, age=?, taille=?, poids=? WHERE pseudo=to_update.getPseudo()";
+        
+        Connection connexion = AccessBD.getConnection();
+        
+        PreparedStatement requete = connexion.prepareStatement(sql);
+        requete.setString(2, newer.getMdp());
+        requete.setString(3, newer.getMail());
+        requete.setString(4, newer.getSexe());
+        requete.setInt(5, newer.getAge());
+        requete.setInt(6, newer.getTaille());
+        requete.setDouble(7, newer.getPoids());
+        requete.execute();
+    }
+    
 }
