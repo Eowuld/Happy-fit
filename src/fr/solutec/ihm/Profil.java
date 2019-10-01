@@ -6,6 +6,8 @@
 package fr.solutec.ihm;
 
 import fr.solutec.model.User;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -16,6 +18,11 @@ public class Profil extends javax.swing.JFrame {
     /**
      * Creates new form Profil
      */
+    public static boolean emailValidate(String email) {
+    Matcher matcher = Pattern.compile("^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}(.[a-z]{2,3})+$|^$", Pattern.CASE_INSENSITIVE).matcher(email);
+    return matcher.find();
+    }
+    
     private static User u;
     public Profil(User u) {
         this.u = u;
@@ -38,8 +45,6 @@ public class Profil extends javax.swing.JFrame {
         lbID = new javax.swing.JLabel();
         txtMail = new javax.swing.JTextField();
         lbMail = new javax.swing.JLabel();
-        txtMdp = new javax.swing.JTextField();
-        txtMdpConf = new javax.swing.JTextField();
         lbMdp = new javax.swing.JLabel();
         lbMdpConf = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
@@ -55,6 +60,8 @@ public class Profil extends javax.swing.JFrame {
         lbKg = new javax.swing.JLabel();
         lbPseudo = new javax.swing.JLabel();
         cbSexe = new javax.swing.JComboBox<>();
+        txtMdp = new javax.swing.JPasswordField();
+        txtMdpConfirm = new javax.swing.JPasswordField();
 
         jLabel2.setText("jLabel2");
 
@@ -72,17 +79,14 @@ public class Profil extends javax.swing.JFrame {
         txtMail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtMail.setAlignmentX(0.0F);
         txtMail.setAlignmentY(0.0F);
+        txtMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMailActionPerformed(evt);
+            }
+        });
 
         lbMail.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMail.setText("E-mail");
-
-        txtMdp.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtMdp.setAlignmentX(0.0F);
-        txtMdp.setAlignmentY(0.0F);
-
-        txtMdpConf.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtMdpConf.setAlignmentX(0.0F);
-        txtMdpConf.setAlignmentY(0.0F);
 
         lbMdp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbMdp.setText("Mot de passe");
@@ -116,6 +120,11 @@ public class Profil extends javax.swing.JFrame {
 
         exitProfil.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         exitProfil.setText("VALIDER");
+        exitProfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitProfilActionPerformed(evt);
+            }
+        });
 
         lblAns.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAns.setText("ans");
@@ -148,8 +157,6 @@ public class Profil extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(exitProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMdpConf, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTaille, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPoids, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -159,13 +166,23 @@ public class Profil extends javax.swing.JFrame {
                     .addComponent(lblCm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbKg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(lbPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(lbPseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cbSexe, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(cbSexe, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtMdpConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(123, 123, 123))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,13 +199,13 @@ public class Profil extends javax.swing.JFrame {
                 .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lbMdp)
-                .addGap(4, 4, 4)
+                .addGap(11, 11, 11)
                 .addComponent(txtMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbMdpConf)
-                .addGap(4, 4, 4)
-                .addComponent(txtMdpConf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
+                .addComponent(txtMdpConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbSexe)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbSexe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,6 +245,41 @@ public class Profil extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exitProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitProfilActionPerformed
+        String newMail = txtMail.getText();
+        if (!emailValidate(newMail)){
+            newMail = u.getMail();
+        }
+        String newPassword = txtMdp.getText();
+        String newPasswordConfirm = txtMdpConfirm.getText();
+        if (!(newPassword==newPasswordConfirm)){
+            newPassword = u.getMdp();
+        }
+        try{
+            int newAge = Integer.parseInt(txtAge.getText());
+        } catch (Exception e) {
+            int newAge = u.getAge();
+        }
+        try{
+            int newTaille = Integer.parseInt(txtTaille.getText());
+        } catch (Exception e){
+            int newTaille = u.getTaille();
+        }
+        try{
+            double newPoids = Double.parseDouble(txtPoids.getText()); 
+        } catch (Exception e) {
+            double newTaille = u.getTaille();
+        }
+
+        Home fnHome = new Home(u);
+        fnHome.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_exitProfilActionPerformed
+
+    private void txtMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,8 +336,8 @@ public class Profil extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitre;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtMail;
-    private javax.swing.JTextField txtMdp;
-    private javax.swing.JTextField txtMdpConf;
+    private javax.swing.JPasswordField txtMdp;
+    private javax.swing.JPasswordField txtMdpConfirm;
     private javax.swing.JTextField txtPoids;
     private javax.swing.JTextField txtTaille;
     // End of variables declaration//GEN-END:variables
