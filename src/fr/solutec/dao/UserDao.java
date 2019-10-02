@@ -96,12 +96,12 @@ public class UserDao {
         Connection connexion = AccessBD.getConnection();
         
         PreparedStatement requete = connexion.prepareStatement(sql);
-        requete.setString(2, newer.getMdp());
-        requete.setString(3, newer.getMail());
-        requete.setString(4, newer.getSexe());
-        requete.setInt(5, newer.getAge());
-        requete.setInt(6, newer.getTaille());
-        requete.setDouble(7, newer.getPoids());
+        requete.setString(1, newer.getMdp());
+        requete.setString(2, newer.getMail());
+        requete.setString(3, newer.getSexe());
+        requete.setInt(4, newer.getAge());
+        requete.setInt(5, newer.getTaille());
+        requete.setDouble(6, newer.getPoids());
         requete.execute();
     }
      
@@ -139,7 +139,7 @@ public class UserDao {
     }
      
     public static String getCurrentUserPoids(User current_u) throws SQLException {
-        String sql ="SELECT * FROM OBJECTIF WHERE (User_idUser = ? AND MAX(date)) GROUP BY poids";
+        String sql ="SELECT poids FROM OBJECTIF WHERE (User_idUser = ? AND MAX(date)) ";
         Connection connexion = AccessBD.getConnection();
         
         PreparedStatement requete = connexion.prepareStatement(sql);
