@@ -111,7 +111,7 @@ public class UserDao {
         Connection connexion = AccessBD.getConnection();
         
         PreparedStatement requete = connexion.prepareStatement(sql);
-        if(getCurrentUserPoids(current_u).equals("NULL")){
+        if(getCurrentUserPoids(current_u).equals("")){
             requete.setString(1, Double.toString(current_u.getPoids()));
         }else{
             requete.setString(1, getCurrentUserPoids(current_u));
@@ -139,14 +139,18 @@ public class UserDao {
     }
      
     public static String getCurrentUserPoids(User current_u) throws SQLException {
-        String sql =" SELECT poids FROM OBJECTIF WHERE User_idUser = ? HAVING MAX(date)";
-        Connection connexion = AccessBD.getConnection();
-        
-        PreparedStatement requete = connexion.prepareStatement(sql);
-        requete.setString(1, Integer.toString(current_u.getId()));
-        ResultSet rs = requete.executeQuery();
-        String current_poids = Double.toString(rs.getDouble("poids"));
-        return current_poids;
+        String current_poids = "";
+        try {
+            String sql =" SELECT poids FROM OBJECTIF WHERE User_idUser = ? HAVING MAX(date)";
+            Connection connexion = AccessBD.getConnection();
+            PreparedStatement requete = connexion.prepareStatement(sql);
+            requete.setString(1, Integer.toString(current_u.getId()));
+            ResultSet rs = requete.executeQuery();
+            current_poids = Double.toString(rs.getDouble("poids"));
+            return current_poids;
+        } catch (Exception e){
+            return current_poids;
+        }
     }
     
 }
