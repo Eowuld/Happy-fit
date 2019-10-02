@@ -139,7 +139,7 @@ public class UserDao {
     }
      
     public static String getCurrentUserPoids(User current_u) throws SQLException {
-        String sql ="SELECT poids FROM OBJECTIF WHERE (User_idUser = ? AND MAX(date))";
+        String sql ="SELECT * FROM OBJECTIF WHERE (User_idUser = ? AND MAX(date)) GROUP BY poids";
         Connection connexion = AccessBD.getConnection();
         
         PreparedStatement requete = connexion.prepareStatement(sql);
