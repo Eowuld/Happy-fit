@@ -23,10 +23,10 @@ public class ObjectifDao {
         Connection connexion = AccessBD.getConnection();
 
         PreparedStatement requete = connexion.prepareStatement(sql);
-        if (getCurrentUserPoids(obj.getU()).equals("")) {
+        if (getCurrentUserPoids(obj.getU()).equals("0.00")) {
             requete.setString(1, Double.toString(obj.getU().getPoids()));
         } else {
-            requete.setString(1, getCurrentUserPoids(obj.getU()));
+            requete.setDouble(1, obj.getU().getPoids());
         }
         if (obj.getObjectifPoids() == 0) {
             requete.setString(2, "0");

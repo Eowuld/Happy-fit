@@ -318,7 +318,7 @@ public class Inscription extends javax.swing.JFrame {
                     else {
                          if (mdp.equals(mdpConfirm) && emailValidate(mail)){            
                             UserDao.insertUser(v);
-                            Objectif obj = new Objectif( v.getPoids(), 0, 0, 0, v);
+                            Objectif obj = new Objectif(v.getPoids(), 0, 0, 0, v);
                             obj.setU(UserDao.getIdFromUser(v));
                             ObjectifDao.insertObjectif(obj);
                             JOptionPane.showMessageDialog(rootPane, "Vous êtes bien inscrit !");

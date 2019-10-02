@@ -108,15 +108,13 @@ public class UserDao {
     }
 
     public static String getCurrentUserPoids(User current_u) throws SQLException {
-        String current_poids = "";
-        double p = 0;
+        String current_poids = "0.00";
         String sql = " SELECT poids FROM OBJECTIF WHERE User_idUser = ? HAVING MAX(date)";
         Connection connexion = AccessBD.getConnection();
         PreparedStatement requete = connexion.prepareStatement(sql);
         requete.setString(1, Integer.toString(current_u.getId()));
         ResultSet rs = requete.executeQuery();
         if (rs.next()) {
-            p = rs.getDouble("poids");
             current_poids = Double.toString(rs.getDouble("poids"));
         }
         return current_poids;
