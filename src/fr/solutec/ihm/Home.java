@@ -51,6 +51,11 @@ public class Home extends javax.swing.JFrame {
         lbHello.setText("Bonjour tes morts");
 
         homeToEdit.setText("modifier profil");
+        homeToEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeToEditActionPerformed(evt);
+            }
+        });
 
         homeToAnalyse.setText("Analyse");
 
@@ -132,6 +137,12 @@ public class Home extends javax.swing.JFrame {
         String hello ="Bonjour " + u.getPseudo();
         lbHello.setText(hello);        
     }//GEN-LAST:event_formWindowOpened
+
+    private void homeToEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeToEditActionPerformed
+        Profil fnProfil = new Profil(u);
+        fnProfil.setVisible(true);
+        this.setVisible(false);  
+    }//GEN-LAST:event_homeToEditActionPerformed
 
     /**
      * @param args the command line arguments
