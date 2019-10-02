@@ -22,26 +22,16 @@ public class Objectif {
     public Objectif() {
     }
 
-    public Objectif(int id, double poids, double objectifPoids, double objectifDistance, double objectifDuree, Date date) {
-        this.id = id;
+    public Objectif(double poids, double objectifPoids, double objectifDistance, double objectifDuree) {
+       
         this.poids = poids;
         this.objectifPoids = objectifPoids;
         this.objectifDistance = objectifDistance;
         this.objectifDuree = objectifDuree;
-        this.date = date;
+        
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public int getId() {
-        return id;
-    }
+    
 
     public double getPoids() {
         return poids;
@@ -59,9 +49,7 @@ public class Objectif {
         return objectifDuree;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+ 
     
     public void setPoids(double poids) {
         this.poids = poids;

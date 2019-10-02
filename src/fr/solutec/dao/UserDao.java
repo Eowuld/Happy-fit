@@ -117,17 +117,17 @@ public class UserDao {
             requete.setString(1, getCurrentUserPoids(current_u));
         }
         if (obj.getObjectifPoids()==0){
-            requete.setString(2, "NULL");
+            requete.setString(2, "0");
         } else{
             requete.setString(2, Double.toString(obj.getObjectifPoids()));
         }
         if (obj.getObjectifDistance()==0){
-            requete.setString(3, "NULL");
+            requete.setString(3, "0");
         } else{
             requete.setString(3, Double.toString(obj.getObjectifDistance()));
         }
         if (obj.getObjectifDuree()==0){
-            requete.setString(4, "NULL");
+            requete.setString(4, "0");
         } else{
             requete.setString(4, Double.toString(obj.getObjectifDuree()));
         }

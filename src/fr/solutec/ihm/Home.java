@@ -202,7 +202,7 @@ public class Home extends javax.swing.JFrame {
 
     private void updatePoidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePoidsActionPerformed
         Objectif update_poids = new Objectif();
-        update_poids.setId(u.getId());
+        
         update_poids.setPoids(Double.parseDouble(newPoids.getText()));
         update_poids.setObjectifDistance(0);
         update_poids.setObjectifDuree(0);
