@@ -5,7 +5,11 @@
  */
 package fr.solutec.ihm;
 
+import static fr.solutec.dao.UserDao.insertObjectif;
+import fr.solutec.model.Objectif;
 import fr.solutec.model.User;
+import java.util.HashSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,6 +42,9 @@ public class Home extends javax.swing.JFrame {
         deconnexion = new javax.swing.JButton();
         homeToAide = new javax.swing.JButton();
         homeToObjectifs = new javax.swing.JButton();
+        newPoids = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        updatePoids = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 250));
@@ -83,6 +90,22 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        newPoids.setText("poids");
+        newPoids.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPoidsActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("kg");
+
+        updatePoids.setText("Ajouter suivi");
+        updatePoids.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updatePoidsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,18 +117,28 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(homeToEdit)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(deconnexion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(homeToAide)
-                .addGap(54, 54, 54))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(151, 151, 151)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(homeToHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                     .addComponent(homeToAnalyse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(homeToObjectifs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(newPoids, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(updatePoids)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(deconnexion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(homeToAide)))
+                .addGap(54, 54, 54))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,11 +147,16 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbHello)
                     .addComponent(homeToEdit))
-                .addGap(138, 138, 138)
+                .addGap(89, 89, 89)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newPoids, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(updatePoids))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addComponent(homeToObjectifs)
-                .addGap(109, 109, 109)
+                .addGap(65, 65, 65)
                 .addComponent(homeToHistorique)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addGap(57, 57, 57)
                 .addComponent(homeToAnalyse)
                 .addGap(112, 112, 112)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -157,6 +195,24 @@ public class Home extends javax.swing.JFrame {
         fnObjectifs.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_homeToObjectifsActionPerformed
+
+    private void newPoidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPoidsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newPoidsActionPerformed
+
+    private void updatePoidsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updatePoidsActionPerformed
+        Objectif update_poids = new Objectif();
+        update_poids.setId(u.getId());
+        update_poids.setPoids(Double.parseDouble(newPoids.getText()));
+        update_poids.setObjectifDistance(0);
+        update_poids.setObjectifDuree(0);
+        update_poids.setObjectifPoids(0);
+        try{
+            insertObjectif(u, update_poids);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+    }//GEN-LAST:event_updatePoidsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,6 +256,9 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton homeToEdit;
     private javax.swing.JButton homeToHistorique;
     private javax.swing.JButton homeToObjectifs;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbHello;
+    private javax.swing.JTextField newPoids;
+    private javax.swing.JButton updatePoids;
     // End of variables declaration//GEN-END:variables
 }
