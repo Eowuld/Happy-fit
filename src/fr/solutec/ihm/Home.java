@@ -206,6 +206,8 @@ public class Home extends javax.swing.JFrame {
         update_poids.setObjectifDistance(0);
         update_poids.setObjectifDuree(0);
         update_poids.setObjectifPoids(0);
+        update_poids.setU(u);
+        
         try{
             insertObjectif(update_poids);
         }catch (Exception e){

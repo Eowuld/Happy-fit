@@ -185,6 +185,10 @@ public class Objectifs extends javax.swing.JFrame {
         } catch (Exception e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
+        
+        Home fnHome = new Home(u);
+        fnHome.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_exitObjectifsActionPerformed
 
     /**
