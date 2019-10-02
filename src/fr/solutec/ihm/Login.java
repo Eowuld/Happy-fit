@@ -7,6 +7,7 @@ package fr.solutec.ihm;
 
 import fr.solutec.dao.UserDao;
 import fr.solutec.model.User;
+import static java.util.Objects.isNull;
 import javax.swing.JOptionPane;
 
 /**
@@ -140,6 +141,10 @@ public class Login extends javax.swing.JFrame {
             
           if (u != null){
            JOptionPane.showMessageDialog(rootPane,"Connection réussie !" );
+           if (u.getPoids() == 0 || u.getTaille() == 0 || u.getAge() == 0){
+               JOptionPane.showMessageDialog(rootPane,"Pensez à ajouter votre poids, taille et âge dans votre profil !" );  
+           } 
+           
            Home fnHome = new Home(u);
            fnHome.setVisible(true);
            this.setVisible(false);

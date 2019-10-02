@@ -31,7 +31,7 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lbHello = new javax.swing.JLabel();
         homeToEdit = new javax.swing.JButton();
         homeToAnalyse = new javax.swing.JButton();
         homeToHistorique = new javax.swing.JButton();
@@ -41,9 +41,14 @@ public class Home extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 250));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Lucida Calligraphy", 0, 18)); // NOI18N
-        jLabel1.setText("Bonjour tes morts");
+        lbHello.setFont(new java.awt.Font("Lucida Calligraphy", 0, 18)); // NOI18N
+        lbHello.setText("Bonjour tes morts");
 
         homeToEdit.setText("modifier profil");
 
@@ -57,6 +62,11 @@ public class Home extends javax.swing.JFrame {
         });
 
         deconnexion.setText("Déconnexion");
+        deconnexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deconnexionActionPerformed(evt);
+            }
+        });
 
         homeToAide.setText("Aide");
 
@@ -66,7 +76,7 @@ public class Home extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 67, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lbHello)
                 .addGap(18, 18, 18)
                 .addComponent(homeToEdit)
                 .addContainerGap())
@@ -91,7 +101,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lbHello)
                     .addComponent(homeToEdit))
                 .addGap(158, 158, 158)
                 .addComponent(homeToAnalyse)
@@ -110,6 +120,18 @@ public class Home extends javax.swing.JFrame {
     private void homeToHistoriqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeToHistoriqueActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_homeToHistoriqueActionPerformed
+
+    private void deconnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deconnexionActionPerformed
+        Login fnLogin = new Login(u);
+        u = null;
+        fnLogin.setVisible(true);
+        this.setVisible(false);   
+    }//GEN-LAST:event_deconnexionActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        String hello ="Bonjour " + u.getPseudo();
+        lbHello.setText(hello);        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -152,6 +174,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton homeToAnalyse;
     private javax.swing.JButton homeToEdit;
     private javax.swing.JButton homeToHistorique;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbHello;
     // End of variables declaration//GEN-END:variables
 }
