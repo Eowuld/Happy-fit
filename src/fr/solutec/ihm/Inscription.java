@@ -24,7 +24,7 @@ public class Inscription extends javax.swing.JFrame {
     public Inscription(User u) {
         this.u = u;
         initComponents();
-        this.getRootPane().setDefaultButton(btRetour);
+        this.getRootPane().setDefaultButton(exitInscription1);
     }
 
     /**
@@ -304,6 +304,9 @@ public class Inscription extends javax.swing.JFrame {
                          if (mdp.equals(mdpConfirm) && emailValidate(mail)){            
                             UserDao.insert(v);           
                             JOptionPane.showMessageDialog(rootPane, "Vous êtes bien inscrit !");
+                            Aide fnAide = new Aide(u);
+                            fnAide.setVisible(true);
+                            this.setVisible(false);                              
                             }
         
                          else if (!mdp.equals(mdpConfirm)){
