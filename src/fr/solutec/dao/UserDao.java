@@ -19,14 +19,14 @@ import fr.solutec.model.User;
  */
 public class UserDao {
     
-    public static User getByLoginPass(String pseudo, String mdp)throws SQLException{
+    public static User getByLoginPass(String login, String mdp)throws SQLException{
         User resultat = null;
         
-        String sql = "SELECT * FROM user WHERE mail = ? AND mdp = ?";
+        String sql = "SELECT * FROM user WHERE login = ? AND mdp = ?";
         Connection connexion = AccessBD.getConnection();
         
         PreparedStatement requete = connexion.prepareStatement(sql);
-        requete.setString(1, pseudo);
+        requete.setString(1, login);
         requete.setString(2, mdp);
         
         ResultSet rs = requete.executeQuery();
@@ -34,7 +34,7 @@ public class UserDao {
         if (rs.next()){
             resultat = new User();
             resultat.setId(rs.getInt("iduser"));
-            resultat.setPseudo(rs.getString("pseudo"));            
+            resultat.setPseudo(rs.getString("login"));            
             resultat.setMdp(rs.getString("mdp"));                      
             resultat.setMail(rs.getString("mail"));            
             resultat.setSexe(rs.getString("sexe"));            
@@ -46,7 +46,7 @@ public class UserDao {
     }
     
      public static void insert(User personne) throws SQLException {
-        String sql = "INSERT INTO user (pseudo, mdp, mail, sexe, age, taille, poids) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO user (login, mdp, mail, sexe, age, taille, poids) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
         Connection connexion = AccessBD.getConnection();
         
@@ -75,7 +75,7 @@ public class UserDao {
         while (rs.next()){
             User u = new User();
             u.setId(rs.getInt("iduser"));
-            u.setPseudo(rs.getString("pseudo"));            
+            u.setPseudo(rs.getString("login"));            
             u.setMdp(rs.getString("mdp"));                      
             u.setMail(rs.getString("mail"));            
             u.setSexe(rs.getString("sexe"));            
@@ -89,7 +89,7 @@ public class UserDao {
         return result;
      }
      public static void update(User to_update, User newer) throws SQLException {
-        String sql = "UPDATE user SET mdp=?, mail=?, sexe=?, age=?, taille=?, poids=? WHERE pseudo=to_update.getPseudo()";
+        String sql = "UPDATE user SET mdp=?, mail=?, sexe=?, age=?, taille=?, poids=? WHERE login=to_update.getPseudo()";
         
         Connection connexion = AccessBD.getConnection();
         
