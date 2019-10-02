@@ -6,6 +6,8 @@
 package fr.solutec.ihm;
 
 import fr.solutec.model.User;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -22,7 +24,7 @@ public class Historique extends javax.swing.JFrame {
         initComponents();
         this.getRootPane().setDefaultButton(exitHistorique);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,16 +34,36 @@ public class Historique extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        choixHistorique = new javax.swing.JComboBox<>();
+        displayHistorique = new javax.swing.JLabel();
+        cbHistorique = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         exitHistorique = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                formPropertyChange(evt);
+            }
+        });
 
-        jLabel1.setText("ceci est l'historique");
+        displayHistorique.setText("Sélectionnez un objectif");
 
-        choixHistorique.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quotidien", "Hebdomadaire" }));
+        cbHistorique.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "...", "Quotidien", "Hebdomadaire" }));
+        cbHistorique.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbHistoriqueItemStateChanged(evt);
+            }
+        });
+        cbHistorique.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbHistoriqueActionPerformed(evt);
+            }
+        });
+        cbHistorique.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cbHistoriquePropertyChange(evt);
+            }
+        });
 
         jLabel2.setText("HISTORIQUE");
 
@@ -62,10 +84,10 @@ public class Historique extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(57, 57, 57)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(displayHistorique, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(131, 131, 131)
-                            .addComponent(choixHistorique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbHistorique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(146, 146, 146)
                             .addComponent(jLabel2))))
@@ -77,9 +99,9 @@ public class Historique extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(jLabel2)
                 .addGap(55, 55, 55)
-                .addComponent(choixHistorique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbHistorique, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(displayHistorique, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
                 .addComponent(exitHistorique)
                 .addGap(35, 35, 35))
@@ -93,6 +115,31 @@ public class Historique extends javax.swing.JFrame {
         fnHome.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_exitHistoriqueActionPerformed
+
+    private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
+    
+    }//GEN-LAST:event_formPropertyChange
+
+    private void cbHistoriqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHistoriqueActionPerformed
+        
+    }//GEN-LAST:event_cbHistoriqueActionPerformed
+
+    private void cbHistoriquePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cbHistoriquePropertyChange
+    
+    }//GEN-LAST:event_cbHistoriquePropertyChange
+
+    private void cbHistoriqueItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbHistoriqueItemStateChanged
+        String cbR = (String) cbHistorique.getSelectedItem();
+        if(cbR.equals("...")){
+            displayHistorique.setText("Sélectionnez un objectif");
+        }
+        if(cbR.equals("Quotidien")){
+            displayHistorique.setText("coucou");
+        }
+        if(cbR.equals("Hebdomadaire")){
+            displayHistorique.setText("semaine");
+        }
+    }//GEN-LAST:event_cbHistoriqueItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -130,9 +177,9 @@ public class Historique extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> choixHistorique;
+    private javax.swing.JComboBox<String> cbHistorique;
+    private javax.swing.JLabel displayHistorique;
     private javax.swing.JButton exitHistorique;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
