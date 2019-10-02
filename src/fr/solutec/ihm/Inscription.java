@@ -6,6 +6,7 @@
 package fr.solutec.ihm;
 
 import fr.solutec.dao.UserDao;
+import fr.solutec.dao.ObjectifDao;
 import static fr.solutec.ihm.Profil.emailValidate;
 import fr.solutec.model.Objectif;
 import fr.solutec.model.User;
@@ -319,7 +320,7 @@ public class Inscription extends javax.swing.JFrame {
                             UserDao.insertUser(v);
                             Objectif obj = new Objectif( v.getPoids(), 0, 0, 0, v);
                             obj.setU(UserDao.getIdFromUser(v));
-                            UserDao.insertObjectif(obj);
+                            ObjectifDao.insertObjectif(obj);
                             JOptionPane.showMessageDialog(rootPane, "Vous êtes bien inscrit !");
                             Aide fnAide = new Aide(v);
                             fnAide.setVisible(true);
@@ -340,7 +341,7 @@ public class Inscription extends javax.swing.JFrame {
          }
         
         catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "except : " + e.getMessage());
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
             }                   
     
         

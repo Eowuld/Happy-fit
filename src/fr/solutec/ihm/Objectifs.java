@@ -6,6 +6,7 @@
 package fr.solutec.ihm;
 
 import fr.solutec.dao.UserDao;
+import fr.solutec.dao.ObjectifDao;
 import fr.solutec.model.Objectif;
 import fr.solutec.model.User;
 import javax.swing.JOptionPane;
@@ -180,7 +181,7 @@ public class Objectifs extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Objectif nul invalide");
         }
         try{
-            UserDao.insertObjectif(new_obj);
+            ObjectifDao.insertObjectif(new_obj);
         } catch (Exception e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

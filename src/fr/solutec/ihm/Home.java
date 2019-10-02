@@ -5,10 +5,9 @@
  */
 package fr.solutec.ihm;
 
-import static fr.solutec.dao.UserDao.insertObjectif;
+import static fr.solutec.dao.ObjectifDao.insertObjectif;
 import fr.solutec.model.Objectif;
 import fr.solutec.model.User;
-import java.util.HashSet;
 import javax.swing.JOptionPane;
 
 /**
