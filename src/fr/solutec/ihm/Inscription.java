@@ -7,7 +7,11 @@ package fr.solutec.ihm;
 
 import fr.solutec.dao.UserDao;
 import static fr.solutec.ihm.Profil.emailValidate;
+import fr.solutec.model.Objectif;
 import fr.solutec.model.User;
+import static java.time.Instant.now;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import static java.util.Objects.isNull;
 import javax.swing.JOptionPane;
@@ -312,7 +316,10 @@ public class Inscription extends javax.swing.JFrame {
                     }
                     else {
                          if (mdp.equals(mdpConfirm) && emailValidate(mail)){            
-                            UserDao.insertUser(v);           
+                            UserDao.insertUser(v);
+                            java.sql.Date current_date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
+                            Objectif obj = new Objectif(v.getId(), 0, 0, 0, 0, current_date);
+                            UserDao.insertObjectif(v,obj);
                             JOptionPane.showMessageDialog(rootPane, "Vous êtes bien inscrit !");
                             Aide fnAide = new Aide(v);
                             fnAide.setVisible(true);

@@ -145,6 +145,11 @@ public class Objectifs extends javax.swing.JFrame {
         double objPoids = 0;
         double objDistance = 0;
         double objDuree = 0;
+        
+        if (objPoids < 0 || objDistance < 0 || objDuree < 0){
+            JOptionPane.showMessageDialog(rootPane, "Objectif négatif invalide");
+        }
+        else {
         if (cbObj.getSelectedItem().toString().equals("kg")){
             try{
                 objPoids = Double.parseDouble(txtObj.getText());
@@ -163,13 +168,11 @@ public class Objectifs extends javax.swing.JFrame {
             } catch (Exception e){
                 JOptionPane.showMessageDialog(rootPane, "Objectif de durée invalide");
             }
-        }
-        if (objPoids < 0 || objDistance < 0 || objDuree < 0){
-            JOptionPane.showMessageDialog(rootPane, "Objectif négatif invalide");
-        }
+        }}
+        
+        
         if (!(objPoids == 0 && objDistance == 0 && objDuree == 0)){
-            new_obj.setId(0);
-            new_obj.setPoids(0);
+           
             new_obj.setObjectifPoids(objPoids);
             new_obj.setObjectifPoids(objDistance);
             new_obj.setObjectifPoids(objDuree);

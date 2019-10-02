@@ -5,6 +5,8 @@
  */
 package fr.solutec.model;
 
+import java.util.Date;
+
 /**
  *
  * @author TLeMet
@@ -15,16 +17,26 @@ public class Objectif {
     private double objectifPoids;
     private double objectifDistance;
     private double objectifDuree;
+    private Date date;
 
     public Objectif() {
     }
 
-    public Objectif(int id, double poids, double objectifPoids, double objectifDistance, double objectifDuree) {
+    public Objectif(int id, double poids, double objectifPoids, double objectifDistance, double objectifDuree, Date date) {
         this.id = id;
         this.poids = poids;
         this.objectifPoids = objectifPoids;
         this.objectifDistance = objectifDistance;
         this.objectifDuree = objectifDuree;
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getId() {
