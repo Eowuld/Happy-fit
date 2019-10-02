@@ -180,7 +180,7 @@ public class Objectifs extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Objectif nul invalide");
         }
         try{
-            UserDao.insertObjectif(u,new_obj);
+            UserDao.insertObjectif(new_obj);
         } catch (Exception e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

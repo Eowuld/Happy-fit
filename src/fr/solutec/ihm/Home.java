@@ -208,7 +208,7 @@ public class Home extends javax.swing.JFrame {
         update_poids.setObjectifDuree(0);
         update_poids.setObjectifPoids(0);
         try{
-            insertObjectif(u, update_poids);
+            insertObjectif(update_poids);
         }catch (Exception e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

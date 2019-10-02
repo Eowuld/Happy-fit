@@ -12,23 +12,41 @@ import java.util.Date;
  * @author TLeMet
  */
 public class Objectif {
-    private int id;
+   
     private double poids;
     private double objectifPoids;
     private double objectifDistance;
     private double objectifDuree;
     private Date date;
+    private User u;
 
     public Objectif() {
     }
 
-    public Objectif(double poids, double objectifPoids, double objectifDistance, double objectifDuree) {
+    public Objectif(double poids, double objectifPoids, double objectifDistance, double objectifDuree, User u) {
        
         this.poids = poids;
         this.objectifPoids = objectifPoids;
         this.objectifDistance = objectifDistance;
         this.objectifDuree = objectifDuree;
+        this.u = u;
         
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public User getU() {
+        return u;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setU(User u) {
+        this.u = u;
     }
 
     

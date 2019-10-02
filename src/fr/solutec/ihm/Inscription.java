@@ -317,9 +317,8 @@ public class Inscription extends javax.swing.JFrame {
                     else {
                          if (mdp.equals(mdpConfirm) && emailValidate(mail)){            
                             UserDao.insertUser(v);
-                            java.sql.Date current_date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
-                            Objectif obj = new Objectif(0, 0, 0, 0);
-                            UserDao.insertObjectif(v,obj);
+                            Objectif obj = new Objectif( 0, 0, 0, 0, v);
+                            UserDao.insertObjectif(obj);
                             JOptionPane.showMessageDialog(rootPane, "Vous êtes bien inscrit !");
                             Aide fnAide = new Aide(v);
                             fnAide.setVisible(true);

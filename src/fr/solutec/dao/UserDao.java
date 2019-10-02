@@ -105,16 +105,16 @@ public class UserDao {
         requete.execute();
     }
      
-     public static void insertObjectif(User current_u, Objectif obj) throws SQLException {
+     public static void insertObjectif(Objectif obj) throws SQLException {
         String sql = "INSERT INTO objectif (poids, objPoids, objDistance, objTemps, date, User_idUser) VALUES (?, ?, ?, ?, ?, ?)";
         
         Connection connexion = AccessBD.getConnection();
         
         PreparedStatement requete = connexion.prepareStatement(sql);
-        if(getCurrentUserPoids(current_u).equals("")){
-            requete.setString(1, Double.toString(current_u.getPoids()));
+        if(getCurrentUserPoids(obj.getU()).equals("")){
+            requete.setString(1, Double.toString(obj.getU().getPoids()));
         }else{
-            requete.setString(1, getCurrentUserPoids(current_u));
+            requete.setString(1, getCurrentUserPoids(obj.getU()));
         }
         if (obj.getObjectifPoids()==0){
             requete.setString(2, "0");
@@ -133,8 +133,7 @@ public class UserDao {
         }
         java.sql.Date current_date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
         requete.setDate(5, current_date);
-        requete.setInt(6, current_u.getId());
-        
+        requete.setInt(6, obj.getU().getId());
         requete.execute();
     }
      
