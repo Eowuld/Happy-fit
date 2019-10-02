@@ -44,16 +44,12 @@
               <Component id="homeToAide" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="161" max="-2" attributes="0"/>
-                      <Component id="homeToAnalyse" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
-                      <Component id="homeToHistorique" min="-2" pref="90" max="-2" attributes="0"/>
-                  </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="homeToHistorique" pref="90" max="32767" attributes="0"/>
+                  <Component id="homeToAnalyse" max="32767" attributes="0"/>
+                  <Component id="homeToObjectifs" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -67,11 +63,13 @@
                   <Component id="lbHello" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="homeToEdit" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
-              <Component id="homeToAnalyse" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="138" max="-2" attributes="0"/>
+              <Component id="homeToObjectifs" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
               <Component id="homeToHistorique" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="255" max="32767" attributes="0"/>
+              <EmptySpace pref="120" max="32767" attributes="0"/>
+              <Component id="homeToAnalyse" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="deconnexion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="homeToAide" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -123,6 +121,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Aide"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="homeToObjectifs">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Objectifs"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeToObjectifsActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

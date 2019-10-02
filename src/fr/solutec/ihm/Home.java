@@ -37,6 +37,7 @@ public class Home extends javax.swing.JFrame {
         homeToHistorique = new javax.swing.JButton();
         deconnexion = new javax.swing.JButton();
         homeToAide = new javax.swing.JButton();
+        homeToObjectifs = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 250));
@@ -75,6 +76,13 @@ public class Home extends javax.swing.JFrame {
 
         homeToAide.setText("Aide");
 
+        homeToObjectifs.setText("Objectifs");
+        homeToObjectifs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeToObjectifsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,13 +100,11 @@ public class Home extends javax.swing.JFrame {
                 .addComponent(homeToAide)
                 .addGap(54, 54, 54))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(homeToAnalyse))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(homeToHistorique, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(151, 151, 151)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(homeToHistorique, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(homeToAnalyse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(homeToObjectifs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -108,11 +114,13 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbHello)
                     .addComponent(homeToEdit))
-                .addGap(158, 158, 158)
-                .addComponent(homeToAnalyse)
-                .addGap(89, 89, 89)
+                .addGap(138, 138, 138)
+                .addComponent(homeToObjectifs)
+                .addGap(109, 109, 109)
                 .addComponent(homeToHistorique)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addComponent(homeToAnalyse)
+                .addGap(112, 112, 112)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deconnexion)
                     .addComponent(homeToAide))
@@ -143,6 +151,12 @@ public class Home extends javax.swing.JFrame {
         fnProfil.setVisible(true);
         this.setVisible(false);  
     }//GEN-LAST:event_homeToEditActionPerformed
+
+    private void homeToObjectifsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeToObjectifsActionPerformed
+        Objectifs fnObjectifs = new Objectifs(u);
+        fnObjectifs.setVisible(true);
+        this.setVisible(false);  
+    }//GEN-LAST:event_homeToObjectifsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,6 +199,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton homeToAnalyse;
     private javax.swing.JButton homeToEdit;
     private javax.swing.JButton homeToHistorique;
+    private javax.swing.JButton homeToObjectifs;
     private javax.swing.JLabel lbHello;
     // End of variables declaration//GEN-END:variables
 }
