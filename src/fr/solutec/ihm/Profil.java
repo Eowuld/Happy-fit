@@ -280,7 +280,7 @@ public class Profil extends javax.swing.JFrame {
         }
         User v = new User(newPseudo, newMail, newPassword, newSexe, newAge, newTaille, newPoids);
         try{
-            UserDao.update(u,v);
+            UserDao.updateUser(u,v);
         } catch (Exception e){
             JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }

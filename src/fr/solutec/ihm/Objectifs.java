@@ -5,7 +5,10 @@
  */
 package fr.solutec.ihm;
 
+import fr.solutec.dao.UserDao;
+import fr.solutec.model.Objectif;
 import fr.solutec.model.User;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -51,6 +54,11 @@ public class Objectifs extends javax.swing.JFrame {
         lblTitre.setText("Objectifs");
 
         exitObjectifs.setText("VALIDER");
+        exitObjectifs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitObjectifsActionPerformed(evt);
+            }
+        });
 
         cbObj.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "kg", "min", "km" }));
 
@@ -131,6 +139,49 @@ public class Objectifs extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void exitObjectifsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitObjectifsActionPerformed
+        Objectif new_obj = new Objectif();
+        double objPoids = 0;
+        double objDistance = 0;
+        double objDuree = 0;
+        if (cbObj.getSelectedItem().toString().equals("kg")){
+            try{
+                objPoids = Double.parseDouble(txtObj.getText());
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(rootPane, "Objectif de poids invalide");
+            }
+        }else if (cbObj.getSelectedItem().toString().equals("km")){
+            try{
+                objDistance = Double.parseDouble(txtObj.getText());
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(rootPane, "Objectif de distance invalide");
+            }
+        }else if (cbObj.getSelectedItem().toString().equals("min")){
+            try{
+                objDuree = Double.parseDouble(txtObj.getText());
+            } catch (Exception e){
+                JOptionPane.showMessageDialog(rootPane, "Objectif de durée invalide");
+            }
+        }
+        if (objPoids < 0 || objDistance < 0 || objDuree < 0){
+            JOptionPane.showMessageDialog(rootPane, "Objectif négatif invalide");
+        }
+        if (!(objPoids == 0 && objDistance == 0 && objDuree == 0)){
+            new_obj.setId(0);
+            new_obj.setPoids(0);
+            new_obj.setObjectifPoids(objPoids);
+            new_obj.setObjectifPoids(objDistance);
+            new_obj.setObjectifPoids(objDuree);
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Objectif nul invalide");
+        }
+        try{
+            UserDao.insertObjectif(u,new_obj);
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        }
+    }//GEN-LAST:event_exitObjectifsActionPerformed
 
     /**
      * @param args the command line arguments
