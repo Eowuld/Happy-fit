@@ -70,6 +70,11 @@ public class Profil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(500, 250));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         lblTitre.setFont(new java.awt.Font("Lucida Calligraphy", 0, 24)); // NOI18N
         lblTitre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -138,6 +143,7 @@ public class Profil extends javax.swing.JFrame {
         lbKg.setText("kg");
 
         lbPseudo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPseudo.setToolTipText("");
 
         scrollSexe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Homme", "Femme", "Autre" }));
 
@@ -293,6 +299,10 @@ public class Profil extends javax.swing.JFrame {
     private void txtMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMailActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        lbPseudo.setText(u.getPseudo());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
