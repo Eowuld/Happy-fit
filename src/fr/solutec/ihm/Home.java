@@ -49,7 +49,7 @@ public class Home extends javax.swing.JFrame {
         });
 
         lbHello.setFont(new java.awt.Font("Lucida Calligraphy", 0, 18)); // NOI18N
-        lbHello.setText("Bonjour tes morts");
+        lbHello.setText("Bonjour");
 
         homeToEdit.setText("modifier profil");
         homeToEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,7 @@ public class Home extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 67, Short.MAX_VALUE)
+                .addGap(0, 159, Short.MAX_VALUE)
                 .addComponent(lbHello)
                 .addGap(18, 18, 18)
                 .addComponent(homeToEdit)
