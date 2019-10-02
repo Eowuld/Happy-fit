@@ -9,6 +9,7 @@ import fr.solutec.dao.UserDao;
 import static fr.solutec.ihm.Profil.emailValidate;
 import fr.solutec.model.User;
 import java.util.List;
+import static java.util.Objects.isNull;
 import javax.swing.JOptionPane;
 
 /**
@@ -285,9 +286,18 @@ public class Inscription extends javax.swing.JFrame {
         String mdp = txtMdp.getText();
         String mdpConfirm = txtMdpConfirm.getText();
         String sexe = (String)cbSexe.getSelectedItem();
-        int age = Integer.parseInt(txtAge.getText());
-        int taille = Integer.parseInt(txtTaille.getText());
-        double poids = Double.parseDouble(txtPoids.getText());
+        int age = 0;
+        if (!txtAge.getText().isEmpty()){
+            age = Integer.parseInt(txtAge.getText());
+        }
+        int taille = 0;
+         if (!txtTaille.getText().isEmpty()){
+            taille = Integer.parseInt(txtTaille.getText());
+        }      
+        double poids = 0;
+        if (!txtPoids.getText().isEmpty()){
+            poids = Double.parseDouble(txtPoids.getText());
+        }        
         try {
         User v = new User(pseudo, mail, mdp, sexe, age, taille, poids); 
         List<User> membres = UserDao.getAllUsers();
@@ -304,7 +314,7 @@ public class Inscription extends javax.swing.JFrame {
                          if (mdp.equals(mdpConfirm) && emailValidate(mail)){            
                             UserDao.insertUser(v);           
                             JOptionPane.showMessageDialog(rootPane, "Vous êtes bien inscrit !");
-                            Aide fnAide = new Aide(u);
+                            Aide fnAide = new Aide(v);
                             fnAide.setVisible(true);
                             this.setVisible(false);                              
                             }

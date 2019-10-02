@@ -60,7 +60,7 @@ public class UserDao {
         requete.setInt(5, personne.getAge());
         requete.setInt(6, personne.getTaille());
         requete.setDouble(7, personne.getPoids());
-        
+           
         requete.execute();
     }
     
