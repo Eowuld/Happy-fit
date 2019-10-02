@@ -5,6 +5,7 @@
  */
 package fr.solutec.dao;
 
+import fr.solutec.model.Objectif;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import fr.solutec.model.User;
+import java.util.Calendar;
 /**
  *
  * @author Joel Banka
@@ -45,7 +47,7 @@ public class UserDao {
         return resultat;
     }
     
-     public static void insert(User personne) throws SQLException {
+     public static void insertUser(User personne) throws SQLException {
         String sql = "INSERT INTO user (login, mdp, mail, sexe, age, taille, poids) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
         Connection connexion = AccessBD.getConnection();
@@ -88,7 +90,7 @@ public class UserDao {
         
         return result;
      }
-     public static void update(User to_update, User newer) throws SQLException {
+     public static void updateUser(User to_update, User newer) throws SQLException {
         String sql = "UPDATE user SET mdp=?, mail=?, sexe=?, age=?, taille=?, poids=? WHERE login=to_update.getPseudo()";
         
         Connection connexion = AccessBD.getConnection();
@@ -101,6 +103,50 @@ public class UserDao {
         requete.setInt(6, newer.getTaille());
         requete.setDouble(7, newer.getPoids());
         requete.execute();
+    }
+     
+     public static void insertObjectif(User current_u, Objectif obj) throws SQLException {
+        String sql = "INSERT INTO objectif (poids, objPoids, objDistance, objTemps, date, User_idUser) VALUES (?, ?, ?, ?, ?, ?)";
+        
+        Connection connexion = AccessBD.getConnection();
+        
+        PreparedStatement requete = connexion.prepareStatement(sql);
+        if(getCurrentUserPoids(current_u).equals("NULL")){
+            requete.setString(1, Double.toString(current_u.getPoids()));
+        }else{
+            requete.setString(1, getCurrentUserPoids(current_u));
+        }
+        if (obj.getObjectifPoids()==0){
+            requete.setString(2, "NULL");
+        } else{
+            requete.setString(2, Double.toString(obj.getObjectifPoids()));
+        }
+        if (obj.getObjectifDistance()==0){
+            requete.setString(3, "NULL");
+        } else{
+            requete.setString(3, Double.toString(obj.getObjectifDistance()));
+        }
+        if (obj.getObjectifDuree()==0){
+            requete.setString(4, "NULL");
+        } else{
+            requete.setString(4, Double.toString(obj.getObjectifDuree()));
+        }
+        java.sql.Date current_date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
+        requete.setDate(5, current_date);
+        requete.setInt(6, current_u.getId());
+        
+        requete.execute();
+    }
+     
+    public static String getCurrentUserPoids(User current_u) throws SQLException {
+        String sql ="SELECT poids FROM OBJECTIF WHERE (User_idUser = ? AND MAX(date))";
+        Connection connexion = AccessBD.getConnection();
+        
+        PreparedStatement requete = connexion.prepareStatement(sql);
+        requete.setString(1, Integer.toString(current_u.getId()));
+        ResultSet rs = requete.executeQuery();
+        String current_poids = Double.toString(rs.getDouble("poids"));
+        return current_poids;
     }
     
 }

@@ -10,6 +10,7 @@ package fr.solutec.model;
  * @author TLeMet
  */
 public class Objectif {
+    private int id;
     private double poids;
     private double objectifPoids;
     private double objectifDistance;
@@ -18,11 +19,16 @@ public class Objectif {
     public Objectif() {
     }
 
-    public Objectif(double poids, double objectifPoids, double objectifDistance, double objectifDuree) {
+    public Objectif(int id, double poids, double objectifPoids, double objectifDistance, double objectifDuree) {
+        this.id = id;
         this.poids = poids;
         this.objectifPoids = objectifPoids;
         this.objectifDistance = objectifDistance;
         this.objectifDuree = objectifDuree;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public double getPoids() {
@@ -41,6 +47,10 @@ public class Objectif {
         return objectifDuree;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public void setPoids(double poids) {
         this.poids = poids;
     }

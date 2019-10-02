@@ -312,7 +312,7 @@ public class Inscription extends javax.swing.JFrame {
                     }
                     else {
                          if (mdp.equals(mdpConfirm) && emailValidate(mail)){            
-                            UserDao.insert(v);           
+                            UserDao.insertUser(v);           
                             JOptionPane.showMessageDialog(rootPane, "Vous êtes bien inscrit !");
                             Aide fnAide = new Aide(v);
                             fnAide.setVisible(true);
