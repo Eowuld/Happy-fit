@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 02 oct. 2019 à 07:02
+-- Généré le :  jeu. 03 oct. 2019 à 07:46
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `happyfit`
 --
+CREATE DATABASE IF NOT EXISTS `happyfit` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `happyfit`;
 
 -- --------------------------------------------------------
 
@@ -34,10 +36,18 @@ CREATE TABLE IF NOT EXISTS `objectif` (
   `objPoids` decimal(5,2) DEFAULT NULL,
   `objDistance` decimal(5,2) DEFAULT NULL,
   `objTemps` time DEFAULT NULL,
-  `date` datetime NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `User_idUser` int(11) NOT NULL,
-  PRIMARY KEY (`User_idUser`)
+  KEY `fk_User` (`User_idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `objectif`
+--
+
+INSERT INTO `objectif` (`poids`, `objPoids`, `objDistance`, `objTemps`, `date`, `User_idUser`) VALUES
+('85.00', '0.00', '0.00', '00:00:00', '2019-10-02 16:22:38', 50),
+('54.00', '0.00', '0.00', '00:00:00', '2019-10-02 16:24:58', 51);
 
 -- --------------------------------------------------------
 
@@ -55,18 +65,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   `sexe` varchar(45) DEFAULT NULL,
   `mail` varchar(45) NOT NULL,
   `age` int(11) DEFAULT NULL,
+  `dateCo` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idUser`),
-  UNIQUE KEY `idUser_UNIQUE` (`idUser`),
   UNIQUE KEY `Login_UNIQUE` (`Login`),
   UNIQUE KEY `mail_UNIQUE` (`mail`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`idUser`, `Login`, `mdp`, `taille`, `poids`, `sexe`, `mail`, `age`) VALUES
-(1, 'test', 'test', 180, '75.00', 'Homme', 'test@test.com', 20);
+INSERT INTO `user` (`idUser`, `Login`, `mdp`, `taille`, `poids`, `sexe`, `mail`, `age`, `dateCo`) VALUES
+(49, 'test', 'test', 180, '80.00', 'Homme', 'test@test.test', 54, '2019-10-02 16:22:01'),
+(50, 'az', 'az', 85, '85.00', 'Homme', 'az@az.az', 85, '2019-10-02 16:22:38'),
+(51, 'bob\'; drop table user;-- ', 'ghg', 45, '54.00', 'Homme', 'grgr@foeof.fr', 54, '2019-10-02 16:24:58');
 
 --
 -- Contraintes pour les tables déchargées
